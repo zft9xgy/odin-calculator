@@ -27,3 +27,14 @@ function operate(firstOperand, secondOperand, operator) {
 			break;
 	}
 }
+
+/* UI */
+const keys = document.querySelectorAll(".key");
+
+keys.forEach((key) =>
+	key.addEventListener("click", (e) => doSomething(e.target.value))
+);
+
+function doSomething(value) {
+	console.log(value);
+}
