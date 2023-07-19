@@ -29,12 +29,31 @@ function operate(firstOperand, secondOperand, operator) {
 }
 
 /* UI */
-const keys = document.querySelectorAll(".key");
+const keysNumber = document.querySelectorAll(".key.number");
+const keysFnc = document.querySelectorAll(".key.fnc");
+const display = document.getElementById("display-result");
 
-keys.forEach((key) =>
-	key.addEventListener("click", (e) => doSomething(e.target.value))
+/* Liseteners */
+
+keysNumber.forEach((key) =>
+	key.addEventListener("click", (e) => updateDisplay(e.target.value))
 );
 
-function doSomething(value) {
-	console.log(value);
+keysFnc.forEach((key) =>
+	key.addEventListener("click", (e) => doFunctionCalc(e.target.value))
+);
+
+function doFunctionCalc(value) {
+	resolverDisplay();
+}
+
+function updateDisplay(value) {
+	if (display.innerText == 0) {
+		clearDisplay();
+	}
+	display.textContent += value;
+}
+
+function clearDisplay() {
+	display.innerText = "";
 }
